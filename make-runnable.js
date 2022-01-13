@@ -46,12 +46,13 @@ ${node.textContent}
 
 } catch (e) {
 message(e);
+console.error(e);
 } // try
 </script>
 </body></html>
 `;
 
-message("Ready.");
+//message("Ready.");
 } // jsRun
 } // processCodeNode
 
