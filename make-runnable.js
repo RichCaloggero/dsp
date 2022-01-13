@@ -45,14 +45,13 @@ try {
 ${node.textContent}
 
 } catch (e) {
-message(e);
 console.error(e);
 } // try
 </script>
 </body></html>
 `;
 
-//message("Ready.");
+message("Ready.");
 } // jsRun
 } // processCodeNode
 
@@ -76,7 +75,7 @@ input.value = text;
 node.hidden = true;
 input.hidden = false;
 message("Edit mode enabled.");
-input.focus();
+//input.focus();
 } // startEditing
 
 function stopEditing (node, input) {
