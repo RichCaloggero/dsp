@@ -1,4 +1,7 @@
 function sine (frequency, amplitude = 1, phase = 0) {return t => amplitude * Math.sin(frequency * 2*Math.PI * t + phase);}
+
+
+
 function square (frequency, amplitude = 1, phase = 0) {return t => amplitude * Math.sign(Math.sin(frequency * 2 * Math.PI * t + phase));}
  
 function square1 (frequency, amplitude = 1, phase = 0) {return sum(

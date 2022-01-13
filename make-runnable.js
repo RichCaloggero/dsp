@@ -41,7 +41,12 @@ context.srcdoc = `<doctype html>
 </head><body>
 <script src="lib.js"></script>
 <script>
+try {
 ${node.textContent}
+
+} catch (e) {
+message(e);
+} // try
 </script>
 </body></html>
 `;
