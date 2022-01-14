@@ -55,7 +55,7 @@ input.value = text;
 node.hidden = true;
 input.hidden = false;
 message("Edit mode enabled.");
-//input.focus();
+input.focus();
 } // startEditing
 
 function stopEditing (node, input) {
