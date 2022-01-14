@@ -1,3 +1,6 @@
+<script src="lib.js"></script>
+<script src="make-runnable.js"></script>
+
 # DSP
 
 ```runHiddenJS
@@ -20,6 +23,4 @@ play(global.c, square(300));
 ```
 
 
-<script src="lib.js"></script>
-<script src="make-runnable.js"></script>
 
