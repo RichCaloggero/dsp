@@ -24,6 +24,7 @@ play(c, sum(sine(300, .5), sine(600, 0.25, .3), sine(1200, 0.15, 0.6), sine(2400
 //play(c, square(300), 0.5);
 
 ```
+<script src="lib.js"></script>
 
 <script src="make-runnable.js"></script>
 
