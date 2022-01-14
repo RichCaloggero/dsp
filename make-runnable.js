@@ -82,7 +82,7 @@ document.querySelector("#message").textContent = text;
 } // message
 
 function compile (code) {
-const func = new Function ("...args", code, "");
+const func = new Function ("...args", code);
 return func;
 } // compile
 
