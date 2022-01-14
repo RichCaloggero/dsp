@@ -1,8 +1,7 @@
-removeAnchorLinks();
-
-document.querySelectorAll("pre > code.language-run, pre > code.language-runJS, pre > code.language-runHiddenJS").forEach(processCodeNode);
-
 const global = {};
+
+removeAnchorLinks();
+document.querySelectorAll("pre > code.language-run, pre > code.language-runJS, pre > code.language-runHiddenJS").forEach(processCodeNode);
 
 function processCodeNode (node) {
 let _run = null;
