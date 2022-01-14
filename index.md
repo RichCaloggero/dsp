@@ -3,7 +3,7 @@
 
 ```runJS
 const c = new AudioContext();
-const hello = "Hello world.";
+const window.hello = "Hello world.";
 
 play(c, sum(sine(300, .5), sine(600, 0.25, .3), sine(1200, 0.15, 0.6), sine(2400, 0.07)), 0.5);
 
@@ -15,7 +15,7 @@ play(c, sum(sine(300, .5), sine(600, 0.25, .3), sine(1200, 0.15, 0.6), sine(2400
 ## Second code block
 
 ```runJS
-message(hello);
+message(window.hello);
 play(c, square());
 ```
 
