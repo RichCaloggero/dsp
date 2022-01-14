@@ -86,4 +86,4 @@ const func = new Function ("...args", code);
 return func;
 } // compile
 
-alert("loaded...");
+//alert("loaded...");
