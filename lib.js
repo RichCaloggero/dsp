@@ -1,4 +1,12 @@
+
+
 function sine (frequency, amplitude = 1, phase = 0) {return t => amplitude * Math.sin(frequency * 2*Math.PI * t + phase);}
+
+function periodic (func = Math.sin, frequency = t => 300, amplitude = t => 1, phase = t => 0) {
+const p2 = 2*Math.PI;
+return t => amplitude(t) * func(frequency(t) * p2 * t + phase(t));
+} // periodic
+
 
 
 
@@ -47,14 +55,12 @@ node.onended = () => node.disconnect();
 node.start();
 } // play
 
-
 function eval (sig, duration, sampleRate) {
 const count = duration * sampleRate;
 const data = new Float32Array(count);
 for (let i=0; i<count; i++) data[i] = sig.next().value;
 return data;
 } // eval
-
 
 function* signal (func, dt, t = 0) {
 while (true) {
@@ -87,6 +93,22 @@ yield sample;
 } // while
 } // signal1
 
+
+
+function sin_s (x, l = -1.0, u = 1.0) {return scale(Math.sin(x), -1,1, l,u);}
+function cos_s (x, l=-1.0, u=1.0) {return scale(Math.cos(x), -1,1, l,u);}
+function random_s (a=0, b=1) {return scale(Math.random(), 0,1, a,b);}
+
+function scale (x, _in1,_in2, _out1,_out2) {
+const in1 = Math.min(_in1, _in2);
+const in2 = Math.max(_in1, _in2);
+const out1 = Math.min(_out1, _out2);
+const out2 = Math.max(_out1, _out2);
+const f = Math.abs(out1-out2) / Math.abs(in1-in2);
+//console.debug("factor: ", f);
+
+return f * (x-in1) + out1;
+} // scale
 
 function not(x) {return !Boolean(x);}
 
