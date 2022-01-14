@@ -30,8 +30,14 @@ node.parentElement.insertAdjacentHTML("afterend", `<hr><h3>Demo</h3><br>${node.t
 } // if
 
 function jsRun (node) {
-compile(node.textContent);
+try {
+const func = compile(node.textContent);
+func();
 message("Ready.");
+
+} catch (e) {
+message(`Compile failed; ${e}`);
+} // try
 } // jsRun
 } // processCodeNode
 
@@ -76,13 +82,8 @@ document.querySelector("#message").textContent = text;
 } // message
 
 function compile (code) {
-try {
 const func = new Function ("...args", code, "");
 return func;
-} catch (e) {
-message (e);
-return null;
-} // try
 } // compile
 
 alert("loaded...");
