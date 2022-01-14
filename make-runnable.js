@@ -77,7 +77,7 @@ document.querySelector("#message").textContent = text;
 
 function compile (code) {
 try {
-const func = new Function (code, "");
+const func = new Function ("...args", code, "");
 return func;
 } catch (e) {
 message (e);
