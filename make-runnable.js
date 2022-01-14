@@ -51,9 +51,9 @@ document.querySelectorAll(".anchorjs-link").forEach(x => x.remove());
 
 function startEditing (node, input) {
 const text = node.textContent;
-input.value = text;
 node.hidden = true;
 input.hidden = false;
+input.value = text;
 input.focus();
 //message("Edit mode enabled.");
 } // startEditing
@@ -85,3 +85,4 @@ return null;
 } // try
 } // compile
 
+alert("loaded...");
