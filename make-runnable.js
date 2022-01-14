@@ -2,6 +2,7 @@ removeAnchorLinks();
 
 document.querySelectorAll("pre > code.language-run, pre > code.language-runJS, pre > code.language-runHiddenJS").forEach(processCodeNode);
 
+const global = {};
 
 function processCodeNode (node) {
 let _run = null;
@@ -34,7 +35,8 @@ node.parentElement.insertAdjacentHTML("afterend", `<hr><h3>Demo</h3><br>${node.t
 
 function jsRun (node) {
 try {
-const func = compile(node.textContent);
+const code = `with(global) {${node.textContent}}`;
+const func = compile(code);
 func();
 message("Ready.");
 
@@ -55,7 +57,7 @@ document.querySelector("head").appendChild(l);
 function removeAnchorLinks () {
 setTimeout(() => {
 document.querySelectorAll(".anchorjs-link").forEach(x => x.remove());
-}, 0);
+}, 1);
 } // removeAnchorLinks
 
 function startEditing (node, input) {
