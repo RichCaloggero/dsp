@@ -1,5 +1,6 @@
-document.querySelectorAll("pre > code.language-run, pre > code.language-runJS, pre > code.language-runHiddenJS").forEach(processCodeNode);
 removeAnchorLinks();
+
+document.querySelectorAll("pre > code.language-run, pre > code.language-runJS, pre > code.language-runHiddenJS").forEach(processCodeNode);
 
 
 function processCodeNode (node) {
@@ -9,19 +10,21 @@ let _input = null;
 if (node.classList.contains("language-runJS") || node.classList.contains("language-runHiddenJS")) {
 //if (!node.hasAttribute("contenteditable")) node.setAttribute("contenteditable", "");
 node.tabIndex = 0;
-if (node.classList.contains("language-runHiddenJS")) node.hidden = true;
+
+if (node.classList.contains("language-runHiddenJS")) {
+node.hidden = true;
+} else {
 node.insertAdjacentHTML("afterEnd", `<div class="js-controls">
 <textarea class="input" cols="80" rows="20" hidden style="zindex:10;"></textarea>
 <button class="run">Run</button>
 </div>
 `);
-
 _run = node.nextElementSibling.querySelector(".run");
 _input = node.nextElementSibling.querySelector(".input");
-
 _run.addEventListener("click", () => jsRun(node));
 node.addEventListener("focus", () => startEditing(node, _input));
 _input.addEventListener("blur", () => stopEditing(node, _input));
+} // if
 
 jsRun(node);
 
