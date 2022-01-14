@@ -1,5 +1,4 @@
-<script src="lib.js"></script>
-<script src="make-runnable.js"></script>
+<script src="global.js"></script>
 
 # DSP
 
@@ -24,3 +23,5 @@ play(global.c, square(300));
 
 
 
+<script src="lib.js"></script>
+<script src="make-runnable.js"></script>
