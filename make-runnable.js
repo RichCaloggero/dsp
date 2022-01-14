@@ -13,7 +13,6 @@ if (node.classList.contains("language-runHiddenJS")) node.hidden = true;
 node.insertAdjacentHTML("afterEnd", `<div class="js-controls">
 <textarea class="input" cols="80" rows="20" hidden style="zindex:10;"></textarea>
 <button class="run">Run</button>
-<iframe class="result"></iframe>
 </div>
 `);
 
@@ -31,26 +30,7 @@ node.parentElement.insertAdjacentHTML("afterend", `<hr><h3>Demo</h3><br>${node.t
 } // if
 
 function jsRun (node) {
-
-
-const context = node.nextElementSibling.querySelector(".result");
-context.srcdoc = `<doctype html>
-<html><head>
-<meta charset="utf-8">
-<title>Results</title>
-</head><body>
-<script src="lib.js"></script>
-<script>
-try {
-${node.textContent}
-
-} catch (e) {
-console.error(e);
-} // try
-</script>
-</body></html>
-`;
-
+compile(node.textContent);
 message("Ready.");
 } // jsRun
 } // processCodeNode
@@ -95,4 +75,13 @@ document.querySelector("#message").textContent = text;
 } // if
 } // message
 
+function compile (code) {
+try {
+const func = new Function (code, "");
+return func;
+} catch (e) {
+message (e);
+return null;
+} // try
+} // compile
 
